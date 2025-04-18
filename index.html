@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🎬 Movie Hub</h1>
+    <div>
+      <input type="text" id="search" placeholder="Search movies..." />
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>🎞️ Latest Movies</h2>
+      <div id="latest-movies" class="movie-grid"></div>
+    </section>
+
+    <section>
+      <h2>🚀 Upcoming Movies</h2>
+      <div id="upcoming-movies" class="movie-grid"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      alert("Please login first!");
+      window.location.href = "login.html";
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
